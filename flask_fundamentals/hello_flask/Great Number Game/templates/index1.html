@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Counter</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+        <style>
+            div{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Welcome to the Great Number Game!</h1>
+            <h5>I am thinking of a number between 1 and 100</h5>
+            <div>
+                
+            </div>
+            <form action='/result' method='post'>
+                <input type="text" placeholder="Guess a number...">
+                <input id="submit" type='submit'>
+            </form>
+        </div>
+    </body>
+</html>

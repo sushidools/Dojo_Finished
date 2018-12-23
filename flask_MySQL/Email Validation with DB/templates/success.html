@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <metal http-equiv="X-UA-Compatible" content="ie-edge"></metal>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <title>Success</title>
+    <style>
+        .error{
+            color: red;
+        }
+        .success{
+            color: green;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Email validation with DB</h1>
+    <br>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class=flashes>
+            {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <br>
+    <table>
+        <tr>
+            <th>Email</th>
+            <th>Created At</th>
+            <th>Delete Email</th>
+        </tr>
+        {% for email in emails: %}
+        <tr>
+            <td>{{ email.email }}</td>
+            <td>{{ email.created_at}}</td>
+            <td>Return to index</td>
+        </tr>    
+        {% endfor %}
+    </table>
+    <div class="form-group row">
+            <div class="col-sm-10">
+                <a href="/" class="btn btn-primary pull-right" >Return</a>
+            </div>
+        </div>
+</body>
+</html>

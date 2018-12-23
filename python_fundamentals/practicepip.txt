@@ -1,0 +1,16 @@
+Had a little trouble originally getting everything downloaded so now it makes a little more sense.
+So to get into the folder I made my Dojo folder in my home instead of documents so it is a little shorter.
+So to direct myself into the folder to activate my virtual machine the command is
+cd Dojo/python_stack/myEnvironments
+Once inside the folder the following is what places the virtual environment in the folder
+virtualenv -p python3 py3Env  
+And then to activate the virtual environment I use the following
+source py3Env/bin/activate
+Once inside pip install Django==1.11.9 installs that version and using pip list inside the machine has a short list of what is within the machine. Deactivating the machine and using pip3 list is longer because it shows what is within the folder that the virtual machine is stored in. In list in the virtual machine it only lists Django, pip, pytz, setup tools, and wheel. In pip3 list used in the folder it lists Django, pip, putz, setup tools, virtualenv, and wheel. So because I am asking it to list within the folder it only lists the contents of the folder that I am within.
+After running pip install Django==1.11.9 
+It first says it is collecting that version of Django. It then shows that I already have an existing Django 2.1.3. It goes on to uninstall that version and then shows that it has successfully installed the Django version that was named.
+Pip freeze only shows you what are not dependent on pip itself. Whereas list will show you everything.
+Then by running cd ~/Desktop to get to the desktop and then running pip freeze > requirements.txt and ls it lists out everything on my desktop.
+The next uninstalls Django and asks if you mean to remove it.
+ Showing it after it has been removed would show nothing. While it is downloaded it shows you the information about Django. The home-page, a summary, and other information. 
+Searching flask gives you an output of everything containing the name flask with a description. 

@@ -1,0 +1,12 @@
+@app.route('/increment')
+def increment():
+    if 'count' in session:
+        session['count'] += 2
+    else:
+        session['count'] = 1
+    return render_template("index.html")
+
+@app.route('/destroy_session')
+def clear():
+    session.clear()
+    return redirect('/')

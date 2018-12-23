@@ -1,1 +1,0 @@
-# Use django to create project folders here

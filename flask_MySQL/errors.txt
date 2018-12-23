@@ -1,0 +1,68 @@
+1 - changed the password to something that wasn't correct
+ * Detected change in '/Users/aleksandradooley/Dojo/python_stack/flask_MySQL/mysqlconnection.py', reloading
+ * Restarting with stat
+Traceback (most recent call last):
+  File "server.py", line 7, in <module>
+    mysql = connectToMySQL('mydb')
+  File "/Users/aleksandradooley/Dojo/python_stack/flask_MySQL/mysqlconnection.py", line 46, in connectToMySQL
+    return MySQLConnection(db)
+  File "/Users/aleksandradooley/Dojo/python_stack/flask_MySQL/mysqlconnection.py", line 12, in __init__
+    autocommit = True)
+  File "/Users/aleksandradooley/Dojo/python_stack/flask_MySQL/py3Env/lib/python3.7/site-packages/pymysql/__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "/Users/aleksandradooley/Dojo/python_stack/flask_MySQL/py3Env/lib/python3.7/site-packages/pymysql/connections.py", line 327, in __init__
+    self.connect()
+  File "/Users/aleksandradooley/Dojo/python_stack/flask_MySQL/py3Env/lib/python3.7/site-packages/pymysql/connections.py", line 598, in connect
+    self._request_authentication()
+  File "/Users/aleksandradooley/Dojo/python_stack/flask_MySQL/py3Env/lib/python3.7/site-packages/pymysql/connections.py", line 862, in _request_authentication
+    auth_packet = self._process_auth(plugin_name, auth_packet)
+  File "/Users/aleksandradooley/Dojo/python_stack/flask_MySQL/py3Env/lib/python3.7/site-packages/pymysql/connections.py", line 933, in _process_auth
+    pkt = self._read_packet()
+  File "/Users/aleksandradooley/Dojo/python_stack/flask_MySQL/py3Env/lib/python3.7/site-packages/pymysql/connections.py", line 683, in _read_packet
+    packet.check_error()
+  File "/Users/aleksandradooley/Dojo/python_stack/flask_MySQL/py3Env/lib/python3.7/site-packages/pymysql/protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/aleksandradooley/Dojo/python_stack/flask_MySQL/py3Env/lib/python3.7/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1045, "Access denied for user 'root'@'localhost' (using password: YES)")
+
+2 - Got rid of db = db
+ * Detected change in '/Users/aleksandradooley/Dojo/python_stack/flask_MySQL/mysqlconnection.py', reloading
+ * Restarting with stat
+Running Query: SELECT * FROM users;
+Something went wrong (1046, 'No database selected')
+all the users False
+ * Debugger is active!
+ * Debugger PIN: 122-056-060
+ 3- I commented out autocommit = True.
+  * Detected change in '/Users/aleksandradooley/Dojo/python_stack/flask_MySQL/mysqlconnection.py', reloading
+ * Restarting with stat
+Traceback (most recent call last):
+  File "server.py", line 3, in <module>
+    from mysqlconnection import connectToMySQL
+  File "/Users/aleksandradooley/Dojo/python_stack/flask_MySQL/mysqlconnection.py", line 16
+    def query_db(self, query, data=None):
+      ^
+SyntaxError: invalid syntax
+4- I commented out  #executable = cursor.execute(query, data)
+ * Detected change in '/Users/aleksandradooley/Dojo/python_stack/flask_MySQL/mysqlconnection.py', reloading
+ * Restarting with stat
+Running Query: SELECT * FROM users;
+Something went wrong execute() first
+all the users False
+ * Debugger is active!
+ * Debugger PIN: 122-056-060
+ 5- I commented out #except Exception as e:
+  * Detected change in '/Users/aleksandradooley/Dojo/python_stack/flask_MySQL/mysqlconnection.py', reloading
+ * Restarting with stat
+Running Query: SELECT * FROM users;
+Traceback (most recent call last):
+  File "server.py", line 9, in <module>
+    print("all the users", mysql.query_db("SELECT * FROM users;"))
+  File "/Users/aleksandradooley/Dojo/python_stack/flask_MySQL/mysqlconnection.py", line 30, in query_db
+    result = cursor.fetchall()
+  File "/Users/aleksandradooley/Dojo/python_stack/flask_MySQL/py3Env/lib/python3.7/site-packages/pymysql/cursors.py", line 301, in fetchall
+    self._check_executed()
+  File "/Users/aleksandradooley/Dojo/python_stack/flask_MySQL/py3Env/lib/python3.7/site-packages/pymysql/cursors.py", line 78, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
